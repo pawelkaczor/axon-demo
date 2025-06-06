@@ -1,4 +1,4 @@
-package pl.newicom.axon.web;
+package pl.newicom.axon.user.ip;
 
 import jakarta.servlet.http.HttpServletRequest;
 

@@ -15,11 +15,11 @@ import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.core.convert.ConversionService;
 import org.springframework.scheduling.annotation.EnableScheduling;
-import pl.newicom.axon.countries.ByIPCountryResolver;
-import pl.newicom.axon.countries.SimpleCountryResolver;
+import pl.newicom.axon.user.country.ByIPCountryResolver;
+import pl.newicom.axon.user.country.SimpleCountryResolver;
 import pl.newicom.axon.http.AxonCommandMessageInterceptor;
-import pl.newicom.axon.web.ClientIPAddressResolver;
-import pl.newicom.axon.web.DefaultClientIPAddressResolver;
+import pl.newicom.axon.user.ip.ClientIPAddressResolver;
+import pl.newicom.axon.user.ip.DefaultClientIPAddressResolver;
 
 @EntityScan(basePackageClasses = {SagaEntry.class, TokenEntry.class})
 @SpringBootApplication

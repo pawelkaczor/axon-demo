@@ -1,4 +1,4 @@
-package pl.newicom.axon.countries;
+package pl.newicom.axon.user.country;
 
 import java.util.Map;
 import java.util.Optional;

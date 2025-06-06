@@ -1,6 +1,5 @@
 package pl.newicom.axon.coupon.rest;
 
-import java.util.Optional;
 import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
 
@@ -8,10 +7,10 @@ import jakarta.servlet.http.HttpServletRequest;
 import org.axonframework.commandhandling.gateway.CommandGateway;
 import org.axonframework.queryhandling.QueryGateway;
 import org.springframework.web.bind.annotation.*;
-import pl.newicom.axon.countries.ByIPCountryResolver;
+import pl.newicom.axon.user.country.ByIPCountryResolver;
 import pl.newicom.axon.coupon.command.RegisterCoupon;
 import pl.newicom.axon.coupon.command.UseCoupon;
-import pl.newicom.axon.web.ClientIPAddressResolver;
+import pl.newicom.axon.user.ip.ClientIPAddressResolver;
 
 @RestController
 @RequestMapping("/")
