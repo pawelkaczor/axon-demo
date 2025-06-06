@@ -1,10 +1,5 @@
 ### Register a new coupon
-POST {{coupon}}/coupons?couponCode=coupon1234&countryId=PL&maxUses=1
+POST {{coupon}}/coupons?couponCode=coupon1234&countryId=PL&maxUses=2
 
 ### Use coupon
-POST {{coupon}}/useCoupon?couponCode=coupon1239
-
-### List all
-# Show available bikes
-GET {{coupon}}/coupons
-Accept: application/json
+POST {{coupon}}/useCoupon?couponCode=coupon1234
