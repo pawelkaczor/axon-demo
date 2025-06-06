@@ -4,6 +4,7 @@ import java.util.Optional;
 import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
 
+import jakarta.servlet.http.HttpServletRequest;
 import org.axonframework.commandhandling.gateway.CommandGateway;
 import org.axonframework.queryhandling.QueryGateway;
 import org.springframework.web.bind.annotation.*;
@@ -12,7 +13,6 @@ import pl.newicom.axon.coupon.command.RegisterCoupon;
 import pl.newicom.axon.coupon.command.UseCoupon;
 import pl.newicom.axon.web.ClientIPAddressResolver;
 
-@CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("/")
 public class CouponController {
@@ -49,18 +49,19 @@ public class CouponController {
 
 	@PostMapping("/useCoupon")
 	public CompletableFuture<Void> useCoupon(
-			@RequestParam("couponCode") String couponCode) {
+			@RequestParam("couponCode") String couponCode, HttpServletRequest request) {
 
 		String userId = UUID.randomUUID().toString();
 
-		return resolveClientCountry()
-				.map(countryId -> commandGateway.<Void>send(new UseCoupon(couponCode, userId, countryId)))
-				.orElseGet(() -> CompletableFuture.failedFuture(new RuntimeException("Unable to resolve client country")));
+		return resolveClientCountry(request)
+				.thenComposeAsync(countryId ->
+						commandGateway.<Void>send(new UseCoupon(couponCode, userId, countryId))
+				);
 	}
 
-	private Optional<String> resolveClientCountry() {
-		return clientIPAddressResolver.resolveClientIpAddress()
-				.flatMap(countryResolver::resolveCountryByIp);
+	private CompletableFuture<String> resolveClientCountry(HttpServletRequest request) {
+		String ipAddress = clientIPAddressResolver.resolveClientIpAddress(request);
+		return countryResolver.resolveCountryByIp(ipAddress);
 	}
 
 }

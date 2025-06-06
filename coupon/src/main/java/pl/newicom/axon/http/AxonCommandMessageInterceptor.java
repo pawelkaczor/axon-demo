@@ -1,4 +1,4 @@
-package pl.newicom.axon;
+package pl.newicom.axon.http;
 
 import java.net.URI;
 

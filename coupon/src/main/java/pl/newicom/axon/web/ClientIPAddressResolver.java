@@ -1,8 +1,8 @@
 package pl.newicom.axon.web;
 
-import java.util.Optional;
+import jakarta.servlet.http.HttpServletRequest;
 
 @FunctionalInterface
 public interface ClientIPAddressResolver {
-	Optional<String> resolveClientIpAddress();
+	String resolveClientIpAddress(HttpServletRequest request);
 }
