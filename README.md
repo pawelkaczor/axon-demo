@@ -25,5 +25,6 @@ See [requests.http](/requests.http) file.
 * Implement tests for the REST layer (controller)
 
 ## Features to consider
-* Query endpoints (e.g. get all coupons, get coupon by id)
-Query endpoints are not implemented, but can be easily added. They require projections that populate the read model with data from the events. Axon Framework provides a way to create projections using event handlers. One can create a projection that listens to the `CouponRegistered` and `CouponUsed` events and populates a read model with the coupon data.
+### Query endpoints
+  
+Query endpoints (e.g. get all coupons, get coupon by id) are not implemented, but can be easily added. They require projections that populate the read model with data from the events. Axon Framework provides a way to create projections using event handlers. One can create a projection that listens to the `CouponRegistered` and `CouponUsed` events and populates a read model with the coupon data.
